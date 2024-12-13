@@ -7,12 +7,12 @@
 
   color-scheme: light dark;
   color: #1e293b;
-  background-color: #e2e8f0;
+  background-color: #d4d4d8;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
   margin: 0;
-  
+  background-color: #f8fafc;
 }

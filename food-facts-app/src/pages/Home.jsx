@@ -1,11 +1,12 @@
 import React from "react";
 import Header from "../components/header/Header";
+import HomeLayout from "../components/home/HomeLayout";
 
 const Home = () => {
   return (
-    <div className="m-0 p-0">
-      <Header />
-    </div>
+    <>
+      <HomeLayout />
+    </>
   );
 };
 

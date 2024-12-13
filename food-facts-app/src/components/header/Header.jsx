@@ -1,10 +1,10 @@
 import React from "react";
 import Container from "../common/Container";
 
-const Header = () => {
+const Header = ({ children }) => {
   return (
-    <div className="bg-orange-50 w-screen min-h-16">
-      <Container>Header</Container>
+    <div className="flex flex-col md:flex-row md:justify-between md:items-center">
+      {children}
     </div>
   );
 };
