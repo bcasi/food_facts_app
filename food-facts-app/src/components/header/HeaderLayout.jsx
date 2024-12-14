@@ -6,7 +6,7 @@ import Searchbar from "../ui/Searchbar";
 
 const HeaderLayout = () => {
   return (
-    <div className="bg-orange-50 w-screen min-h-16 fixed">
+    <div className="bg-orange-50 w-screen min-h-16 fixed top-0 left-0 right-0 z-50 ">
       <Container>
         <Header>
           <HeaderLogo />
