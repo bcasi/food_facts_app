@@ -8,6 +8,7 @@ const Product = () => {
   const { id } = useParams();
 
   useEffect(() => {
+    
     getProductByBarcode(id).then((res) => {
       console.log(res);
     });

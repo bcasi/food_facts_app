@@ -12,15 +12,27 @@ export async function allProducts(category, page_size) {
   }
 }
 
+// export async function getProductByBarcode(id) {
+//   const productUrl = `${baseUrl}api/v0/product/${id}.json`;
+
+//   try {
+//     const fetchData = await fetch(productUrl);
+//     const res = await fetchData.json();
+//     return res;
+//   } catch (e) {
+//     console.log(e);
+//   }
+// }
+
 export async function getProductByBarcode(id) {
-  const productUrl = `${baseUrl}api/v0/product/${id}.json 
-`;
+  const productUrl = `${baseUrl}api/v0/product/${id}`;
+
   try {
     const fetchData = await fetch(productUrl);
     const res = await fetchData.json();
     return res;
   } catch (e) {
-    console.log(e);
+    console.error("Error fetching product:", e);
   }
 }
 

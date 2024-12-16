@@ -3,8 +3,13 @@ import HeaderLayout from "../header/HeaderLayout";
 import FilterLayout from "../filter/FilterLayout";
 import ProductsLayout from "../products/ProductsLayout";
 import Main from "../common/Main";
-import { allProducts, searchProductName } from "../../api/url";
+import {
+  allProducts,
+  getProductByBarcode,
+  searchProductName,
+} from "../../api/url";
 import { categories, productAndGradeSort } from "../../utils/constants";
+import { useNavigate } from "react-router";
 
 const HomeLayout = () => {
   const [search, setSearch] = useState("");
@@ -15,6 +20,7 @@ const HomeLayout = () => {
   );
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
@@ -22,6 +28,7 @@ const HomeLayout = () => {
       allProducts(categoryFilter, 20).then((res) => {
         if (res) setLoading(false);
         setProducts(res.products);
+        console.log(res.products);
       });
     }
   }, [categoryFilter]);
@@ -29,21 +36,20 @@ const HomeLayout = () => {
   useEffect(() => {
     const debounceFn = setTimeout(() => {
       if (search !== "") {
-        searchProductName(search).then((searchProducts) => {
-          setProducts(searchProducts.products);
-        });
-      } else {
-        allProducts(categoryFilter, 20).then((res) => {
-          if (res) setLoading(false);
-          setProducts(res.products);
-        });
+        if (isNaN(search)) {
+          searchProductName(search).then((searchProducts) => {
+            setProducts(searchProducts.products);
+          });
+        } else {
+          navigate(`/product/${search}`);
+        }
       }
 
       setDelayedSearch(search);
     }, 3000);
 
     return () => clearTimeout(debounceFn);
-  }, [search, categoryFilter]);
+  }, [search]);
 
   const handleCategory = (e) => {
     setCategoryFilter(e.target.value);
