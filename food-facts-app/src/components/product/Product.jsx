@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { getProductByBarcode } from "../../api/url";
 
 const Product = () => {
-  return (
-    <div>Product</div>
-  )
-}
+  const [product, setProduct] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const { id } = useParams();
 
-export default Product
+  useEffect(() => {
+    getProductByBarcode(id).then((res) => {
+      console.log(res);
+    });
+  }, [id]);
+
+  return <div>Product</div>;
+};
+
+export default Product;

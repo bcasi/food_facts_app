@@ -5,7 +5,6 @@ import { useParams } from "react-router";
 import Product from "./Product";
 
 const ProductLayout = () => {
-  const { id } = useParams();
   return (
     <div className="m-0 p-0 flex flex-col relative">
       <HeaderLayout />

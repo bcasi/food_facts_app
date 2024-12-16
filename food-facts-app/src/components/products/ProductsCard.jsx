@@ -5,7 +5,7 @@ import { NavLink } from "react-router";
 const ProductsCard = ({ data }) => {
   return (
     <NavLink
-      to={`/product/${data.id}`}
+      to={`/product/${data._id}`}
       className="bg-white cursor-pointer hover:bg-slate-50 rounded-md h-80 md:min-w-64 w-52  p-5 drop-shadow-2xl flex flex-col justify-center items-center "
     >
       <div className="w-full flex justify-center">
@@ -15,10 +15,10 @@ const ProductsCard = ({ data }) => {
         />
       </div>
       <h3 className="capitalize">
-        {data?.brands_imported} {data?.brands}
+        {data?.product_name || data?.abbreviated_product_name} - {data?.brands}
       </h3>
       <div className="flex mt-5">
-        <Nutriscore grade={data?.nutriscore_tags?.[0]} />
+        <Nutriscore grade={data?.nutriscore_grade} />
       </div>
     </NavLink>
   );

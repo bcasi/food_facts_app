@@ -2,10 +2,10 @@ import React from "react";
 import ProductsList from "./ProductsList";
 import Container from "../common/Container";
 
-const ProductsLayout = () => {
+const ProductsLayout = ({ loading, products }) => {
   return (
     <Container>
-      <ProductsList />
+      <ProductsList loading={loading} products={products} />
     </Container>
   );
 };
