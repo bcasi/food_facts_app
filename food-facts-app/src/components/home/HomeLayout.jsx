@@ -5,18 +5,30 @@ import ProductsLayout from "../products/ProductsLayout";
 import Main from "../common/Main";
 import useCategory from "../../hooks/useCategory";
 import useSearch from "../../hooks/useSearch";
+import useScroll from "../../hooks/useScroll";
 
 const HomeLayout = () => {
   const {
     loading,
     setLoading,
-    categoryFilter,
-    setCategoryFilter,
     products,
     setProducts,
+    categoryFilter,
+    setCategoryFilter,
+    pageNum,
+    setPageNum,
   } = useCategory();
 
   const { search, setSearch } = useSearch(setLoading, setProducts);
+  const { isScrolling } = useScroll(
+    loading,
+    setLoading,
+    products,
+    setProducts,
+    categoryFilter,
+    pageNum,
+    setPageNum
+  );
 
   return (
     <div className="m-0 p-0 flex flex-col relative">
@@ -28,7 +40,11 @@ const HomeLayout = () => {
           categoryFilter={categoryFilter}
           setCategoryFilter={setCategoryFilter}
         />
-        <ProductsLayout loading={loading} products={products} />
+        <ProductsLayout
+          isScrolling={isScrolling}
+          loading={loading}
+          products={products}
+        />
       </Main>
     </div>
   );

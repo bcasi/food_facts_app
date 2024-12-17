@@ -3,7 +3,7 @@ import ProductsList from "./ProductsList";
 import Container from "../common/Container";
 import Loading from "../ui/Loading";
 
-const ProductsLayout = ({ loading, products }) => {
+const ProductsLayout = ({ isScrolling, loading, products }) => {
   return (
     <Container>
       {loading ? (
@@ -11,7 +11,7 @@ const ProductsLayout = ({ loading, products }) => {
           <Loading />
         </div>
       ) : (
-        <ProductsList loading={loading} products={products} />
+        <ProductsList isScrolling={isScrolling} products={products} />
       )}
     </Container>
   );

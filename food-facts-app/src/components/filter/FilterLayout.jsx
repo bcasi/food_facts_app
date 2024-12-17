@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Container from "../common/Container";
 import FilterButton from "./FilterButton";
 import FilterOption from "./FilterOption";
@@ -28,47 +28,47 @@ const FilterLayout = ({
 
     setSortProductAndNutriscore(findSort.value);
 
-    const sortedProducts = [...products].sort((a, b) =>
-      isProducts(selectedVal, a, b)
-    );
+    const productSort = sortProducts([...products], selectedVal);
 
-    setProducts(sortedProducts);
+    setProducts(productSort);
   };
+
+  // const sortedProducts = useMemo(() =>
+  //   sortProducts([...products], sortProductOrNurtiscore, [
+  //     products,
+  //     sortProductOrNurtiscore,
+  //   ])
+  // );
 
   /** Sort functionality */
-  const isProducts = (val, a, b) => {
-    if (val.item === "products") {
-      return isProductName(a, b, val.sort);
-    } else {
-      if (val.sort === "asc") {
-        return a.nutriscore_grade.localeCompare(b.nutriscore_grade);
+
+  function sortProducts(productsList, sortMethod) {
+    return productsList.sort((a, b) => {
+      if (sortMethod?.item === "products") {
+        return sortProductName(a, b, sortMethod.sort);
       } else {
-        return b.nutriscore_grade.localeCompare(a.nutriscore_grade);
+        return sortGrade(a, b, sortMethod.sort);
       }
-    }
-  };
+    });
+  }
 
   /**Some products doesn't have product_name */
 
-  const isProductName = (a, b, sort) => {
-    if (a.product_name === "") {
-      if (sort === "asc") {
-        return a.abbreviated_product_name.localeCompare(
-          b.abbreviated_product_name
-        );
-      } else {
-        return b.abbreviated_product_name.localeCompare(
-          a.abbreviated_product_name
-        );
-      }
+  function sortProductName(a, b, sort) {
+    if (sort === "asc") {
+      return a.product_name.localeCompare(b.product_name);
     } else {
-      if (sort === "asc") {
-        return a.product_name.localeCompare(b.product_name);
-      } else {
-        return b.product_name.localeCompare(a.product_name);
-      }
+      return b.product_name.localeCompare(a.product_name);
     }
-  };
+  }
+
+  function sortGrade(a, b, sort) {
+    if (sort === "asc") {
+      return a.nutriscore_grade.localeCompare(b.nutriscore_grade);
+    } else {
+      return b.nutriscore_grade.localeCompare(a.nutriscore_grade);
+    }
+  }
 
   return (
     <div className="bg-black min-h-20 w-screen h-20 mb-10">

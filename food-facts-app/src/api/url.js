@@ -1,15 +1,18 @@
 const baseUrl = "https://world.openfoodfacts.org/";
 
-export async function allProducts(category, page_size) {
-  const size = page_size ? `&page_size=${page_size}` : "";
-  const allUrl = `${baseUrl}category/${category}${size}.json`;
-  try {
-    const fetchData = await fetch(allUrl);
-    const res = await fetchData.json();
-    return res;
-  } catch (e) {
-    console.log(e);
+export async function allProducts(category, page) {
+  const pageNo = page ? `&page=${page}` : "";
+  const allUrl = `${baseUrl}category/${category}${pageNo}.json`;
+
+  const fetchData = await fetch(allUrl);
+  if (!fetchData.ok) {
+    if (fetchData.status === 429) {
+      throw new Error("Too many requests. You’ve reached the rate limit.");
+    }
+    throw new Error(`An error occurred: ${fetchData.statusText}`);
   }
+  const res = await fetchData.json();
+  return res;
 }
 
 // export async function getProductByBarcode(id) {
