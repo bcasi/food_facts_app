@@ -34,21 +34,28 @@ const HomeLayout = () => {
   }, [categoryFilter]);
 
   useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
     const debounceFn = setTimeout(() => {
       if (search !== "") {
+        setLoading(true);
         if (isNaN(search)) {
-          searchProductName(search).then((searchProducts) => {
+          searchProductName(search, signal).then((searchProducts) => {
             setProducts(searchProducts.products);
           });
         } else {
           navigate(`/product/${search}`);
         }
+        setLoading(false);
       }
 
       setDelayedSearch(search);
     }, 3000);
 
-    return () => clearTimeout(debounceFn);
+    return () => {
+      clearTimeout(debounceFn);
+      controller.abort();
+    };
   }, [search]);
 
   const handleCategory = (e) => {

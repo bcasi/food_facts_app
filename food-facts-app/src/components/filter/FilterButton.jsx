@@ -6,7 +6,7 @@ const FilterButton = ({ filterName, handleFilter, data, render }) => {
     <select
       value={filterName}
       onChange={handleFilter}
-      className="bg-white rounded-full min-h-8 text-black hover:bg-slate-50 px-3 outline-none"
+      className="bg-white rounded-full text-sm  min-h-8 text-black min-w-40 h-14 sm:w-60 sm:h-10 hover:bg-slate-50 px-3 outline-none"
     >
       {render(data)}
     </select>

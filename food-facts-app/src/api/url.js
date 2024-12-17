@@ -43,6 +43,10 @@ export async function searchProductName(product_name) {
     const res = await fetchData.json();
     return res;
   } catch (e) {
-    console.log(e);
+    if (e.name === "AbortError") {
+      console.log("Fetch aborted");
+    } else {
+      console.error("Error fetching product:", e);
+    }
   }
 }

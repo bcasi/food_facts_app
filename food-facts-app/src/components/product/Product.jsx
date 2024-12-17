@@ -7,8 +7,15 @@ const Product = () => {
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
+  /**
+   * Product image
+Full list of ingredients
+Nutritional values (energy, fat, carbs, proteins, etc.)
+Labels (vegan, gluten-free, etc.)
+
+   */
+
   useEffect(() => {
-    
     getProductByBarcode(id).then((res) => {
       console.log(res);
     });
