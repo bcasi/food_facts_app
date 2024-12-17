@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { searchProductName } from "../../api/url";
+import useSearch from "../../hooks/useSearch";
 
 const Searchbar = ({ search, setSearch }) => {
   const handleSearch = (e) => {
