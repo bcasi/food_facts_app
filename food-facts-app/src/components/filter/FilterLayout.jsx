@@ -55,10 +55,24 @@ const FilterLayout = ({
   /**Some products doesn't have product_name */
 
   function sortProductName(a, b, sort) {
+    const nameA =
+      a.product_name ||
+      a.product_name_de ||
+      a.product_name_en ||
+      a.product_name_fr ||
+      a.abbreviated_product_name ||
+      "";
+    const nameB =
+      b.product_name ||
+      b.product_name_de ||
+      b.product_name_en ||
+      b.product_name_fr ||
+      b.abbreviated_product_name ||
+      "";
     if (sort === "asc") {
-      return a.product_name.localeCompare(b.product_name);
+      return nameA.localeCompare(nameB);
     } else {
-      return b.product_name.localeCompare(a.product_name);
+      return nameB.localeCompare(nameA);
     }
   }
 

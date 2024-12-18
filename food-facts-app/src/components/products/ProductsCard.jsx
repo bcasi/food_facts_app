@@ -12,10 +12,16 @@ const ProductsCard = ({ data }) => {
         <img
           className="h-36 min-h-36 max-w-[147px]"
           src={data?.image_front_url}
+          alt={data?.product_name}
         />
       </div>
       <h3 className="capitalize">
-        {data?.product_name || data?.abbreviated_product_name} - {data?.brands}
+        {data?.product_name ||
+          data?.product_name_de ||
+          data?.product_name_en ||
+          data?.product_name_fr ||
+          data?.abbreviated_product_name}{" "}
+        - {data?.brands}
       </h3>
       <div className="flex mt-5">
         <Nutriscore grade={data?.nutriscore_grade} />
