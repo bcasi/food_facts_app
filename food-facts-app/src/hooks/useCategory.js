@@ -15,7 +15,6 @@ export default function useCategory() {
     allProducts(categoryFilter, 1).then((res) => {
       if (res) setLoading(false);
       setProducts(res.products);
-      console.log(res.products);
     });
     setPageNum(2);
   }, [categoryFilter]);

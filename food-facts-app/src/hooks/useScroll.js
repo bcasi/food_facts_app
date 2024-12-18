@@ -2,9 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { allProducts } from "../api/url";
 
 export default function useScroll(
-  loading,
-  setLoading,
-  products,
+ 
   setProducts,
   categoryFilter,
   pageNum,

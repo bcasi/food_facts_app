@@ -25,6 +25,7 @@ const ProductsCard = ({ data }) => {
       </h3>
       <div className="flex mt-5">
         <Nutriscore grade={data?.nutriscore_grade} />
+        <p>{ca}</p>
       </div>
     </NavLink>
   );

@@ -3,7 +3,7 @@ import { allProducts } from "../../api/url";
 import ProductsCard from "./ProductsCard";
 import Loading from "../ui/Loading";
 
-const ProductsList = ({ isScrolling, products }) => {
+const ProductsList = ({  isScrolling, products }) => {
   return (
     <div className="w-full h-full">
       <ul className="flex flex-wrap justify-center items-center gap-5 w-full p-0 ">

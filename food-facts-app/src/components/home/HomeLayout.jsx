@@ -21,9 +21,6 @@ const HomeLayout = () => {
 
   const { search, setSearch } = useSearch(setLoading, setProducts);
   const { isScrolling } = useScroll(
-    loading,
-    setLoading,
-    products,
     setProducts,
     categoryFilter,
     pageNum,
