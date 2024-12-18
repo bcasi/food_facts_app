@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router";
 
 import Homepage from "./pages/Homepage";
-import Productpage from "./pages/ProductPage";
+import Productpage from "./pages/Productpage";
 
 function App() {
   return (
