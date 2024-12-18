@@ -1,6 +1,7 @@
 # food_facts_app
 
 #
+
 <h1>food_facts_app</h1>
 
 <h2>Tech Stack Used</h2>
@@ -19,6 +20,5 @@
   On load-> Called category url for products ->
   https://world.openfoodfacts.org/category/{category}.json - By using useEffect
   and pass the state value to the Products layout
-  <img width="150px" height="100px" src="/code-snapshot.png" />
+  <img  src="/code-snapshot.png" />
 </p>
-
