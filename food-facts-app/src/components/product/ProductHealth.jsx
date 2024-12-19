@@ -4,17 +4,22 @@ import {
   generateNutriLabel,
   generateNutriscoreBgColor,
   generateNutriscoreTextColor,
+  getColorLabelUsingGrade,
 } from "../../helpers/helper";
 import ProductIngredients from "./ProductIngredients";
 
 const ProductHealth = ({ product }) => {
+  
   const nutriScoreBg =
-    generateNutriscoreBgColor(product?.nutriscore_grade) +
+    getColorLabelUsingGrade(product?.nutriscore_grade, "bg_color") +
     " rounded-md  flex gap-1 p-3";
 
   const nutriScoreTextColor =
-    generateNutriscoreTextColor(product?.nutriscore_grade) + " ";
-  const nutriLabel = generateNutriLabel(product?.nutriscore_grade);
+    getColorLabelUsingGrade(product?.nutriscore_grade, "text_color") + " ";
+  const nutriLabel = getColorLabelUsingGrade(
+    product?.nutriscore_grade,
+    "label"
+  );
   return (
     <div className="grow flex flex-col justify-evenly">
       <h1 className="text-3xl">Health</h1>

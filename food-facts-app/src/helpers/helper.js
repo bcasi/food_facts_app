@@ -4,37 +4,35 @@ export default function removeEnFromString(arr) {
     .join(", ");
 }
 
-export function generateNutriscoreBgColor(grade) {
-  const bgColorMap = {
-    a: "bg-green-50",
-    b: "bg-lime-50",
-    c: "bg-yellow-50",
-    d: "bg-orange-50",
-    e: "bg-red-50",
+export function getColorLabelUsingGrade(grade, type) {
+  const labelColorObject = {
+    a: {
+      label: "Very good nutritional quantity",
+      text_color: "text-green-500",
+      bg_color: "bg-green-50",
+    },
+    b: {
+      label: "Good nutritional quantity",
+      text_color: "text-lime-500",
+      bg_color: "bg-green-50",
+    },
+    c: {
+      label: "Average nutritional quantity",
+      text_color: "text-yellow-500",
+      bg_color: "bg-yellow-50",
+    },
+    d: {
+      label: "Lower nutritional quantity",
+      text_color: "text-orange-500",
+      bg_color: "bg-orange-50",
+    },
+    e: {
+      label: "Poor nutritional quantity",
+      text_color: "text-red-500",
+      bg_color: "bg-red-50",
+    },
   };
-  return bgColorMap[grade] || "";
-}
-
-export function generateNutriscoreTextColor(grade) {
-  const textColorMap = {
-    a: "text-green-500",
-    b: "text-lime-500",
-    c: "text-yellow-500",
-    d: "text-orange-500",
-    e: "text-red-500",
-  };
-  return textColorMap[grade] || "";
-}
-
-export function generateNutriLabel(grade) {
-  const labelMap = {
-    a: "Very good",
-    b: "Good",
-    c: "Average",
-    d: "Lower",
-    e: "Lower",
-  };
-  return (labelMap[grade] || "") + " nutritional quantity";
+  return labelColorObject[grade][type] || "";
 }
 
 export function removeEnFromStringAndPercent(arr) {
