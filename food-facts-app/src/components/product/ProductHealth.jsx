@@ -1,15 +1,9 @@
 import React from "react";
 import Nutriscore from "../ui/Nutriscore";
-import {
-  generateNutriLabel,
-  generateNutriscoreBgColor,
-  generateNutriscoreTextColor,
-  getColorLabelUsingGrade,
-} from "../../helpers/helper";
+import { getColorLabelUsingGrade } from "../../helpers/helper";
 import ProductIngredients from "./ProductIngredients";
 
 const ProductHealth = ({ product }) => {
-  
   const nutriScoreBg =
     getColorLabelUsingGrade(product?.nutriscore_grade, "bg_color") +
     " rounded-md  flex gap-1 p-3";

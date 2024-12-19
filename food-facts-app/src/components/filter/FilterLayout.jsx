@@ -10,9 +10,7 @@ const FilterLayout = ({
   products,
   setProducts,
 }) => {
-  const [sortProductOrNurtiscore, setSortProductAndNutriscore] = useState(
-    productAndGradeSort?.[0].value
-  );
+  const [sortProductOrNurtiscore, setSortProductAndNutriscore] = useState("");
 
   const handleCategory = (e) => {
     setCategoryFilter(e.target.value);
@@ -89,9 +87,14 @@ const FilterLayout = ({
       <Container>
         <div className="flex h-full  text-white gap-5 items-center justify-center md:justify-start md:items-center md:pl-5 ">
           <FilterButton
-            filterName={JSON.stringify(sortProductOrNurtiscore)}
+            filterName={
+              sortProductOrNurtiscore === ""
+                ? sortProductOrNurtiscore
+                : JSON.stringify(sortProductOrNurtiscore)
+            }
             handleFilter={handleSortProductByName}
             data={productAndGradeSort}
+            isDefault={true}
             render={(sortItem) =>
               sortItem?.map((sort) => (
                 <option key={sort.name} value={JSON.stringify(sort.value)}>
