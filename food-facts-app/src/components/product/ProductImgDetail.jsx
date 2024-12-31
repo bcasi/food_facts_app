@@ -7,6 +7,7 @@ const ProductImgDetail = ({ data }) => {
     <>
       <img
         className="md:w-64 md:h-80  lg:w-80 lg:h-96  rounded-xl"
+        loading="lazy"
         src={
           product?.image_url ||
           product?.image_thumb_url ||

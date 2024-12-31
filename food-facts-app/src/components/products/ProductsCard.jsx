@@ -13,6 +13,7 @@ const ProductsCard = ({ data }) => {
           className="h-36 min-h-36 max-w-[147px]"
           src={data?.image_front_url}
           alt={data?.product_name}
+          loading="lazy"
         />
       </div>
       <h3 className="capitalize">
